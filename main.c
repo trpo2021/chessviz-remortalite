@@ -7,65 +7,65 @@
 #define QUEEN 113
 #define KING 107
 
-void makeFigure(int figure, int isWhite)
+int board[8][8];
+
+void printBoard()
 {
-    putchar(figure - isWhite * 32);
-    putchar(' ');
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            printf("%c ", board[i][j]);
+        }
+        putchar('\n');
+    }
+}
+
+int makeFigure(int figure, int isWhite)
+{
+    return figure - isWhite * 32;
 }
 
 void makeBoard()
 {
-    makeFigure(ROOK, 0);
-    makeFigure(KNIGHT, 0);
-    makeFigure(BISHOP, 0);
-    makeFigure(QUEEN, 0);
-    makeFigure(KING, 0);
-    makeFigure(BISHOP, 0);
-    makeFigure(KNIGHT, 0);
-    makeFigure(ROOK, 0);
+    board[0][0] = makeFigure(ROOK, 0);
+    board[0][1] = makeFigure(KNIGHT, 0);
+    board[0][2] = makeFigure(BISHOP, 0);
+    board[0][3] = makeFigure(QUEEN, 0);
+    board[0][4] = makeFigure(KING, 0);
+    board[0][5] = makeFigure(BISHOP, 0);
+    board[0][6] = makeFigure(KNIGHT, 0);
+    board[0][7] = makeFigure(ROOK, 0);
 
-    putchar('\n');
+    board[1][0] = makeFigure(PAWN, 0);
+    board[1][1] = makeFigure(PAWN, 0);
+    board[1][2] = makeFigure(PAWN, 0);
+    board[1][3] = makeFigure(PAWN, 0);
+    board[1][4] = makeFigure(PAWN, 0);
+    board[1][5] = makeFigure(PAWN, 0);
+    board[1][6] = makeFigure(PAWN, 0);
+    board[1][7] = makeFigure(PAWN, 0);
 
-    makeFigure(PAWN, 0);
-    makeFigure(PAWN, 0);
-    makeFigure(PAWN, 0);
-    makeFigure(PAWN, 0);
-    makeFigure(PAWN, 0);
-    makeFigure(PAWN, 0);
-    makeFigure(PAWN, 0);
-    makeFigure(PAWN, 0);
+    board[7][0] = makeFigure(ROOK, 1);
+    board[7][1] = makeFigure(KNIGHT, 1);
+    board[7][2] = makeFigure(BISHOP, 1);
+    board[7][3] = makeFigure(QUEEN, 1);
+    board[7][4] = makeFigure(KING, 1);
+    board[7][5] = makeFigure(BISHOP, 1);
+    board[7][6] = makeFigure(KNIGHT, 1);
+    board[7][7] = makeFigure(ROOK, 1);
 
-    putchar('\n');
-    putchar('\n');
-    putchar('\n');
-    putchar('\n');
-    putchar('\n');
-
-    makeFigure(PAWN, 1);
-    makeFigure(PAWN, 1);
-    makeFigure(PAWN, 1);
-    makeFigure(PAWN, 1);
-    makeFigure(PAWN, 1);
-    makeFigure(PAWN, 1);
-    makeFigure(PAWN, 1);
-    makeFigure(PAWN, 1);
-
-    putchar('\n');
-
-    makeFigure(ROOK, 1);
-    makeFigure(KNIGHT, 1);
-    makeFigure(BISHOP, 1);
-    makeFigure(QUEEN, 1);
-    makeFigure(KING, 1);
-    makeFigure(BISHOP, 1);
-    makeFigure(KNIGHT, 1);
-    makeFigure(ROOK, 1);
-
-    putchar('\n');
+    board[6][0] = makeFigure(PAWN, 1);
+    board[6][1] = makeFigure(PAWN, 1);
+    board[6][2] = makeFigure(PAWN, 1);
+    board[6][3] = makeFigure(PAWN, 1);
+    board[6][4] = makeFigure(PAWN, 1);
+    board[6][5] = makeFigure(PAWN, 1);
+    board[6][6] = makeFigure(PAWN, 1);
+    board[6][7] = makeFigure(PAWN, 1);
 }
 
 int main()
 {
     makeBoard();
+    printBoard();
 }
 
