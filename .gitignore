@@ -1,3 +1,7 @@
-chessviz
+bin/chessviz
 *.o
 *.d
+*.swp
+*.swo
+*.txt
+*.a
