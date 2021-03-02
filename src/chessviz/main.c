@@ -1,4 +1,4 @@
-#include <board.h>
+#include <libchessviz/board.h>
 
 int main()
 {
