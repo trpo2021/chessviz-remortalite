@@ -1,13 +1,15 @@
 #include <stdio.h>
 
-#define PAWN 112
-#define BISHOP 98
-#define KNIGHT 110
-#define ROOK 114
-#define QUEEN 113
-#define KING 107
-
 #define BOARD_SIZE 8
+
+enum Figures {
+    PAWN = 112,
+    BISHOP = 98,
+    KNIGHT = 110,
+    ROOK = 114,
+    QUEEN = 113,
+    KING = 107,
+};
 
 void print_board(int board[BOARD_SIZE][BOARD_SIZE])
 {
