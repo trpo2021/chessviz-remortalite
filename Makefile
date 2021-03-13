@@ -3,7 +3,7 @@ LIB_NAME = libchessviz
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-CPPFLAGS = -I src -MP -MMD
+CPPFLAGS = -I src -MP -MMD -g
 
 BIN_DIR = bin
 OBJ_DIR = obj

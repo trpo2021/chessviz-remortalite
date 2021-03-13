@@ -18,6 +18,8 @@ void make_movements(
     int idx_dot = 0;
 
     for (int line = 0; line < cnt_line; line++) {
+        if (game_arr[line][0] == '\0')
+            break;
         while ((c = game_arr[line][j++]) != '\0') {
             if (c == '.') {
                 idx_dot = j - 1;
@@ -25,7 +27,9 @@ void make_movements(
         }
 
         int idx_Pw = idx_dot;
-        while ((game_arr[line][idx_Pw] < 'a') || (game_arr[line][idx_Pw] > 'h'))
+        while (((game_arr[line][idx_Pw] < 'a')
+                || (game_arr[line][idx_Pw] > 'h'))
+               && (game_arr[line][idx_Pw] != '\0'))
             idx_Pw++;
 
         move_figure(
