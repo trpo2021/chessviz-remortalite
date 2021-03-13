@@ -7,35 +7,45 @@
 #define MAX_LINE_LEN 20
 #define PATH_TO_FILE "./game.txt"
 
-void make_movements(int board[BOARD_SIZE][BOARD_SIZE], char** game_arr, int cnt_line) {
-	// game_arr[cnt_line][MAX_LINE_LEN]
-	// input format: "N. Pw-Pw Pb-Pb"
-	char c;
+void make_movements(
+        int board[BOARD_SIZE][BOARD_SIZE], char** game_arr, int cnt_line)
+{
+    // game_arr[cnt_line][MAX_LINE_LEN]
+    // input format: "N. Pw-Pw Pb-Pb"
+    char c;
 
-	int j = 0;
-	int idx_dot = 0;
+    int j = 0;
+    int idx_dot = 0;
 
-	for (int line=0; line<cnt_line; line++) {
-		while ((c = game_arr[line][j++]) != '\0') {
-			if (c == '.') {
-				idx_dot = j-1;	
-			}
-		}
-		
-		int idx_Pw = idx_dot;
-		while ((game_arr[line][idx_Pw] < 'a') || 
-				(game_arr[line][idx_Pw] > 'h')) idx_Pw++;
+    for (int line = 0; line < cnt_line; line++) {
+        while ((c = game_arr[line][j++]) != '\0') {
+            if (c == '.') {
+                idx_dot = j - 1;
+            }
+        }
 
-		move_figure(board, game_arr[line][idx_Pw], game_arr[line][idx_Pw+1], 
-				game_arr[line][idx_Pw+3], game_arr[line][idx_Pw+4]);
-		
-		int idx_Pb = idx_Pw + 6;
-		printf("%c \n", game_arr[line][idx_Pb]);
-		move_figure(board, game_arr[line][idx_Pb], game_arr[line][idx_Pb+1], 
-				game_arr[line][idx_Pb+3], game_arr[line][idx_Pb+4]);
+        int idx_Pw = idx_dot;
+        while ((game_arr[line][idx_Pw] < 'a') || (game_arr[line][idx_Pw] > 'h'))
+            idx_Pw++;
 
-		print_board(board);
-	}
+        move_figure(
+                board,
+                game_arr[line][idx_Pw],
+                game_arr[line][idx_Pw + 1],
+                game_arr[line][idx_Pw + 3],
+                game_arr[line][idx_Pw + 4]);
+
+        int idx_Pb = idx_Pw + 6;
+        printf("%c \n", game_arr[line][idx_Pb]);
+        move_figure(
+                board,
+                game_arr[line][idx_Pb],
+                game_arr[line][idx_Pb + 1],
+                game_arr[line][idx_Pb + 3],
+                game_arr[line][idx_Pb + 4]);
+
+        print_board(board);
+    }
 }
 
 void process_file(int board[BOARD_SIZE][BOARD_SIZE])
@@ -78,7 +88,7 @@ void process_file(int board[BOARD_SIZE][BOARD_SIZE])
         if (fgets(game_arr[i], MAX_LINE_LEN - 1, fp) == NULL)
             break;
 
-		// remove \n, \r and spaces at the end of lines, add \0 symbol
+        // remove \n, \r and spaces at the end of lines, add \0 symbol
         for (j = strlen(game_arr[i]) - 1; j >= 0; j--) {
             if ((game_arr[i][j] != '\n') && (game_arr[i][j] != '\r')
                 && (game_arr[i][i] != ' '))
