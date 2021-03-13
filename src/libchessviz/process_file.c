@@ -15,23 +15,27 @@ void make_movements(int board[BOARD_SIZE][BOARD_SIZE], char** game_arr, int cnt_
 	int j = 0;
 	int idx_dot = 0;
 
-	int line = 0;
-	while ((c = game_arr[line][j++]) != '\0') {
-		if (c == '.') {
-			idx_dot = j-1;	
+	for (int line=0; line<cnt_line; line++) {
+		while ((c = game_arr[line][j++]) != '\0') {
+			if (c == '.') {
+				idx_dot = j-1;	
+			}
 		}
-	}
-	
-	int idx_Pw = idx_dot;
-	while ((game_arr[line][idx_Pw] < 'a') || 
-			(game_arr[line][idx_Pw] > 'h')) idx_Pw++;
+		
+		int idx_Pw = idx_dot;
+		while ((game_arr[line][idx_Pw] < 'a') || 
+				(game_arr[line][idx_Pw] > 'h')) idx_Pw++;
 
-	printf("idx_Pw: %d\n", idx_Pw);
-	move_figure(board, game_arr[line][idx_Pw], game_arr[line][idx_Pw+1], 
-			game_arr[line][idx_Pw+3], game_arr[line][idx_Pw+4]);
-	
-	cnt_line *= 1;
-	printf("idx_dot = %d\n", idx_dot);
+		move_figure(board, game_arr[line][idx_Pw], game_arr[line][idx_Pw+1], 
+				game_arr[line][idx_Pw+3], game_arr[line][idx_Pw+4]);
+		
+		int idx_Pb = idx_Pw + 6;
+		printf("%c \n", game_arr[line][idx_Pb]);
+		move_figure(board, game_arr[line][idx_Pb], game_arr[line][idx_Pb+1], 
+				game_arr[line][idx_Pb+3], game_arr[line][idx_Pb+4]);
+
+		print_board(board);
+	}
 }
 
 void process_file(int board[BOARD_SIZE][BOARD_SIZE])

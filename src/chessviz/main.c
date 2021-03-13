@@ -9,4 +9,6 @@ int main()
     print_board(board);
     process_file(board);
     print_board(board);
+
+    return 0;
 }
