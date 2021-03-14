@@ -12,25 +12,22 @@ void make_movements(
 {
     // game_arr[cnt_line][MAX_LINE_LEN]
     // input format: "N. Pw-Pw Pb-Pb"
-    char c;
 
-    int j = 0;
     int idx_dot = 0;
 
     for (int line = 0; line < cnt_line; line++) {
-        if (game_arr[line][0] == '\0')
+        if (game_arr[line][0] == '\0' || strlen(game_arr[line]) == 0)
             break;
-        while ((c = game_arr[line][j++]) != '\0') {
-            if (c == '.') {
-                idx_dot = j - 1;
-            }
-        }
+
+        idx_dot = strchr(game_arr[line], '.') - game_arr[line];
 
         int idx_Pw = idx_dot;
         while (((game_arr[line][idx_Pw] < 'a')
                 || (game_arr[line][idx_Pw] > 'h'))
                && (game_arr[line][idx_Pw] != '\0'))
             idx_Pw++;
+
+        puts(game_arr[line]);
 
         move_figure(
                 board,
@@ -40,7 +37,6 @@ void make_movements(
                 game_arr[line][idx_Pw + 4]);
 
         int idx_Pb = idx_Pw + 6;
-        printf("%c \n", game_arr[line][idx_Pb]);
         move_figure(
                 board,
                 game_arr[line][idx_Pb],

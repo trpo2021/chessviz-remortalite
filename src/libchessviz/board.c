@@ -4,7 +4,8 @@
 
 void print_board(int board[BOARD_SIZE][BOARD_SIZE])
 {
-    printf("   a b c d e f g h\n\n");
+    puts("------------------");
+    puts("   a b c d e f g h\n");
     for (int i = 0; i < BOARD_SIZE; i++) {
         printf("%d  ", BOARD_SIZE - i);
         for (int j = 0; j < BOARD_SIZE; j++) {
@@ -15,6 +16,7 @@ void print_board(int board[BOARD_SIZE][BOARD_SIZE])
         }
         putchar('\n');
     }
+    puts("------------------");
     putchar('\n');
 }
 
