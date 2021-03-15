@@ -6,7 +6,6 @@
 #include <string.h>
 
 #define MAX_LINE_LEN 20
-#define PATH_TO_FILE "./game.txt"
 
 void make_movements(
         int board[BOARD_SIZE][BOARD_SIZE], char** game_arr, int cnt_line)
@@ -49,11 +48,11 @@ void make_movements(
     }
 }
 
-void process_file(int board[BOARD_SIZE][BOARD_SIZE])
+void process_file(int board[BOARD_SIZE][BOARD_SIZE], const char* path_to_file)
 {
-    FILE* fp = fopen(PATH_TO_FILE, "r");
+    FILE* fp = fopen(path_to_file, "r");
     if (fp == NULL) {
-        fprintf(stderr, "Cannot process the file %s\n", PATH_TO_FILE);
+        fprintf(stderr, "Cannot process the file %s\n", path_to_file);
         exit(ERROR_FILE_PROCESSING);
     }
 
@@ -97,9 +96,9 @@ void process_file(int board[BOARD_SIZE][BOARD_SIZE])
         game_arr[i][j + 1] = '\0';
     }
     fclose(fp);
-
-    for (int k = 0; k < i; k++)
-        printf("%s\n", game_arr[k]);
-
+    /*
+        for (int k = 0; k < i; k++)
+            printf("%s\n", game_arr[k]);
+    */
     make_movements(board, game_arr, cnt_line);
 }

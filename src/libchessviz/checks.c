@@ -3,6 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void check_if_file_exists(const char* path_to_file)
+{
+    FILE* fp;
+    if (!(fp = fopen(path_to_file, "r"))) {
+        fprintf(stderr, "Error! File %s doesn't exist!\n", path_to_file);
+        exit(ERROR_FILE_PROCESSING);
+    }
+}
+
 void check_is_exist(
         int board[BOARD_SIZE][BOARD_SIZE],
         int figure_code,

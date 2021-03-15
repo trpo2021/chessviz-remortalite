@@ -17,4 +17,6 @@ void check_is_exist(
 
 void check_range_of_fields(char num, char lit); // ERROR_NOT_ON_BOARD
 
+void check_if_file_exists(const char*);
+
 #endif

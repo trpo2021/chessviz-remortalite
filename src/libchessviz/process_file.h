@@ -3,6 +3,6 @@
 
 #include <libchessviz/board.h>
 
-void process_file(int board[BOARD_SIZE][BOARD_SIZE]);
+void process_file(int board[BOARD_SIZE][BOARD_SIZE], const char*);
 
 #endif
