@@ -18,8 +18,8 @@ void move_figure(
     int figure_code = PAWN;
 
     if (!is_exist(board, figure_code, prev_num_idx, prev_lit_idx)) {
-		fprintf(stderr, "Error! No figure on the cell.\n");
-		exit(10);
+        fprintf(stderr, "Error! No figure on the cell.\n");
+        exit(ERROR_NO_FIGURE);
     }
 
     char figure = board[prev_num_idx][prev_lit_idx];

@@ -53,14 +53,14 @@ void process_file(int board[BOARD_SIZE][BOARD_SIZE])
     FILE* fp = fopen(PATH_TO_FILE, "r");
     if (fp == NULL) {
         fprintf(stderr, "Cannot process the file %s\n", PATH_TO_FILE);
-        exit(1);
+        exit(ERROR_FILE_PROCESSING);
     }
 
     int cnt_line = 8;
     char** game_arr = (char**)malloc(cnt_line * sizeof(char*));
     if (game_arr == NULL) {
         fprintf(stderr, "Cannot allocate memory!\n");
-        exit(2);
+        exit(ERROR_MEMORY_ALLOCATION);
     }
 
     int i;
@@ -73,7 +73,7 @@ void process_file(int board[BOARD_SIZE][BOARD_SIZE])
             game_arr = realloc(game_arr, cnt_line * sizeof(char*));
             if (game_arr == NULL) {
                 fprintf(stderr, "Cannot allocate memory!\n");
-                exit(3);
+                exit(ERROR_MEMORY_ALLOCATION);
             }
         }
 
@@ -81,7 +81,7 @@ void process_file(int board[BOARD_SIZE][BOARD_SIZE])
         game_arr[i] = malloc(MAX_LINE_LEN);
         if (game_arr[i] == NULL) {
             fprintf(stderr, "Cannot allocate memory!\n");
-            exit(4);
+            exit(ERROR_MEMORY_ALLOCATION);
         }
 
         // fill game_arr with lines
