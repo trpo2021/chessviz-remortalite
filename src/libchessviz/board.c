@@ -1,19 +1,13 @@
+#include <libchessviz/board.h>
+
 #include <stdio.h>
-
-#define BOARD_SIZE 8
-
-enum Figures {
-    PAWN = 112,
-    BISHOP = 98,
-    KNIGHT = 110,
-    ROOK = 114,
-    QUEEN = 113,
-    KING = 107,
-};
 
 void print_board(int board[BOARD_SIZE][BOARD_SIZE])
 {
+    puts("------------------");
+    puts("   a b c d e f g h\n");
     for (int i = 0; i < BOARD_SIZE; i++) {
+        printf("%d  ", BOARD_SIZE - i);
         for (int j = 0; j < BOARD_SIZE; j++) {
             if (board[i][j])
                 printf("%c ", board[i][j]);
@@ -22,6 +16,8 @@ void print_board(int board[BOARD_SIZE][BOARD_SIZE])
         }
         putchar('\n');
     }
+    puts("------------------");
+    putchar('\n');
 }
 
 int make_figure(int figure, int isWhite)
@@ -40,14 +36,8 @@ void make_board(int board[BOARD_SIZE][BOARD_SIZE])
     board[0][6] = make_figure(KNIGHT, 0);
     board[0][7] = make_figure(ROOK, 0);
 
-    board[1][0] = make_figure(PAWN, 0);
-    board[1][1] = make_figure(PAWN, 0);
-    board[1][2] = make_figure(PAWN, 0);
-    board[1][3] = make_figure(PAWN, 0);
-    board[1][4] = make_figure(PAWN, 0);
-    board[1][5] = make_figure(PAWN, 0);
-    board[1][6] = make_figure(PAWN, 0);
-    board[1][7] = make_figure(PAWN, 0);
+    for (int i = 0; i < BOARD_SIZE; i++)
+        board[1][i] = make_figure(PAWN, 0);
 
     board[7][0] = make_figure(ROOK, 1);
     board[7][1] = make_figure(KNIGHT, 1);
@@ -58,19 +48,6 @@ void make_board(int board[BOARD_SIZE][BOARD_SIZE])
     board[7][6] = make_figure(KNIGHT, 1);
     board[7][7] = make_figure(ROOK, 1);
 
-    board[6][0] = make_figure(PAWN, 1);
-    board[6][1] = make_figure(PAWN, 1);
-    board[6][2] = make_figure(PAWN, 1);
-    board[6][3] = make_figure(PAWN, 1);
-    board[6][4] = make_figure(PAWN, 1);
-    board[6][5] = make_figure(PAWN, 1);
-    board[6][6] = make_figure(PAWN, 1);
-    board[6][7] = make_figure(PAWN, 1);
-}
-
-int main()
-{
-    int board[BOARD_SIZE][BOARD_SIZE] = {};
-    make_board(board);
-    print_board(board);
+    for (int i = 0; i < BOARD_SIZE; i++)
+        board[6][i] = make_figure(PAWN, 1);
 }
