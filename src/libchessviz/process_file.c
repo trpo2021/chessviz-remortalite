@@ -90,8 +90,7 @@ void process_file(int board[BOARD_SIZE][BOARD_SIZE])
 
         // remove \n, \r and spaces at the end of lines, add \0 symbol
         for (j = strlen(game_arr[i]) - 1; j >= 0; j--) {
-            if ((game_arr[i][j] != '\n') && (game_arr[i][j] != '\r')
-                && (game_arr[i][i] != ' '))
+            if ((game_arr[i][j] != '\n') && (game_arr[i][j] != '\r'))
                 break;
         }
         game_arr[i][j + 1] = '\0';
