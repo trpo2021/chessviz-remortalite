@@ -10,6 +10,9 @@ void move_figure(
         char next_lit,
         char next_num)
 {
+    check_range_of_fields(prev_num, prev_lit);
+    check_range_of_fields(next_num, next_lit);
+
     int prev_lit_idx = prev_lit - 'a';
     int prev_num_idx = BOARD_SIZE - (prev_num - '0');
     int next_lit_idx = next_lit - 'a';
@@ -17,10 +20,7 @@ void move_figure(
 
     int figure_code = PAWN;
 
-    if (!is_exist(board, figure_code, prev_num_idx, prev_lit_idx)) {
-        fprintf(stderr, "Error! No figure on the cell.\n");
-        exit(ERROR_NO_FIGURE);
-    }
+    check_is_exist(board, figure_code, prev_num_idx, prev_lit_idx);
 
     char figure = board[prev_num_idx][prev_lit_idx];
     board[prev_num_idx][prev_lit_idx] = 0;

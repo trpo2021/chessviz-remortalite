@@ -1,4 +1,5 @@
 #include <libchessviz/board.h>
+#include <libchessviz/checks.h>
 #include <libchessviz/move.h>
 #include <stdio.h>
 #include <stdlib.h>
