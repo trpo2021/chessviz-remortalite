@@ -1,4 +1,5 @@
 bin/chessviz
+bin/chessviz-test
 *.o
 *.d
 *.swp
