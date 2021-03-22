@@ -21,12 +21,21 @@ void make_movements(
 
         long step = strtol(game_arr[line], &p_dot, 10);
         printf("Step: %ld\n", step);
-        printf("Str: %s\n", p_dot + 1);
+        // printf("Str: %s\n", p_dot + 1);
 
         char* p_Pw = p_dot + 1 + (p_dot[1] == ' ' ? 1 : 0);
         printf("p_Pw: %s\n", p_Pw);
         putchar(*(p_Pw + 0));
 
+        /*
+        char* str = "         e2-e4 e5-e6  ";
+        printf("str:%s\n", str);
+        strip_beg(&str);
+        printf("strip_beg:%s\n", str);
+        char* substr = calloc(MAX_LINE_LEN, sizeof(char));
+        get_group(str, &substr);
+        printf("get_group:%s\n", substr);
+        */
         int idx_Pw = 0;
         move_figure(
                 board,
