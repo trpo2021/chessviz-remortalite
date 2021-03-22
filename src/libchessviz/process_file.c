@@ -1,11 +1,11 @@
 #include <libchessviz/board.h>
 #include <libchessviz/checks.h>
+#include <libchessviz/constants.h>
 #include <libchessviz/move.h>
+#include <libchessviz/str_processing.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define MAX_LINE_LEN 20
 
 void make_movements(
         int board[BOARD_SIZE][BOARD_SIZE], char** game_arr, int cnt_line)

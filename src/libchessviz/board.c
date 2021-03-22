@@ -1,4 +1,5 @@
 #include <libchessviz/board.h>
+#include <libchessviz/constants.h>
 
 #include <stdio.h>
 

@@ -1,6 +1,9 @@
 #ifndef CHECKS_H
 #define CHECKS_H
 
+#include <libchessviz/board.h>
+#include <libchessviz/constants.h>
+
 enum Errors {
     ERROR_FILE_PROCESSING,
     ERROR_MEMORY_ALLOCATION,

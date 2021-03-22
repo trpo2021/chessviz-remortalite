@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#define BOARD_SIZE 8
+#include <libchessviz/constants.h>
 
 enum Figures {
     PAWN = 112,
