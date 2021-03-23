@@ -58,5 +58,5 @@ void process_file(int board[BOARD_SIZE][BOARD_SIZE], const char* path_to_file)
         for (int k = 0; k < i; k++)
             printf("%s\n", game_arr[k]);
     */
-    make_movements(board, game_arr, cnt_line);
+    process_movements(board, game_arr, cnt_line);
 }

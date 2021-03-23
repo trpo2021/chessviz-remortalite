@@ -3,8 +3,11 @@
 
 #include <libchessviz/constants.h>
 
-void make_movements(int board[BOARD_SIZE][BOARD_SIZE], char**, int);
+void process_movements(int board[BOARD_SIZE][BOARD_SIZE], char**, int);
 
-void move_figure(int board[BOARD_SIZE][BOARD_SIZE], char, char, char, char);
+void make_movement(int board[BOARD_SIZE][BOARD_SIZE], char*, int, int);
+
+void move_figure(
+        int board[BOARD_SIZE][BOARD_SIZE], char, char, char, char, int, int);
 
 #endif

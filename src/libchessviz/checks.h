@@ -10,6 +10,7 @@ enum Errors {
     ERROR_WRONG_CELL,
     ERROR_NO_FIGURE,
     ERROR_NOT_ON_BOARD,
+    ERROR_WRONG_FIGURETYPE,
 };
 
 void check_is_exist(

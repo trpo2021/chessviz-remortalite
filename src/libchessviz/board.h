@@ -16,6 +16,8 @@ void print_board(int (*)[BOARD_SIZE]);
 
 int make_figure(int, int);
 
+int check_figure_type(char);
+
 void make_board(int (*)[BOARD_SIZE]);
 
 #endif

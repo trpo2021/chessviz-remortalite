@@ -4,5 +4,4 @@ bin/chessviz-test
 *.d
 *.swp
 *.swo
-*.txt
 *.a
