@@ -1,61 +1,10 @@
-#include <libchessviz/board.h>
 #include <libchessviz/checks.h>
 #include <libchessviz/constants.h>
 #include <libchessviz/move.h>
-#include <libchessviz/str_processing.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-void make_movements(
-        int board[BOARD_SIZE][BOARD_SIZE], char** game_arr, int cnt_line)
-{
-    // game_arr[cnt_line][MAX_LINE_LEN]
-    // input format: "N. Pw-Pw Pb-Pb"
-
-    char* p_dot = NULL;
-
-    for (int line = 0; line < cnt_line; line++) {
-        if (game_arr[line][0] == '\0' || strlen(game_arr[line]) == 0)
-            break;
-
-        long step = strtol(game_arr[line], &p_dot, 10);
-        printf("Step: %ld\n", step);
-        // printf("Str: %s\n", p_dot + 1);
-
-        char* p_Pw = p_dot + 1 + (p_dot[1] == ' ' ? 1 : 0);
-        printf("p_Pw: %s\n", p_Pw);
-        putchar(*(p_Pw + 0));
-
-        /*
-        char* str = "         e2-e4 e5-e6  ";
-        printf("str:%s\n", str);
-        strip_beg(&str);
-        printf("strip_beg:%s\n", str);
-        char* substr = calloc(MAX_LINE_LEN, sizeof(char));
-        get_group(str, &substr);
-        printf("get_group:%s\n", substr);
-        */
-        int idx_Pw = 0;
-        move_figure(
-                board,
-                p_Pw[idx_Pw],
-                p_Pw[idx_Pw + 1],
-                p_Pw[idx_Pw + 3],
-                p_Pw[idx_Pw + 4]);
-
-        char* p_Pb = p_Pw + 5 + (p_Pw[5] == ' ' ? 1 : 0);
-        int idx_Pb = 0;
-        move_figure(
-                board,
-                p_Pb[idx_Pb],
-                p_Pb[idx_Pb + 1],
-                p_Pb[idx_Pb + 3],
-                p_Pb[idx_Pb + 4]);
-
-        print_board(board);
-    }
-}
 
 void process_file(int board[BOARD_SIZE][BOARD_SIZE], const char* path_to_file)
 {
