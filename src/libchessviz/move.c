@@ -33,8 +33,6 @@ void move_figure(
 
     if (en_passant) {
         int is_white = 2 * !!isupper(figure) - 1; // -1 or 1
-        // printf("is_white idx: %d\n", is_white);
-        // printf("\n");
         board[next_num_idx + is_white][next_lit_idx] = 0;
     }
 }
