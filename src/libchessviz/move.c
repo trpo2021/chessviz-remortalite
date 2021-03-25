@@ -22,8 +22,8 @@ void move_figure(
 
     int prev_lit_idx = prev_lit - 'a';
     int prev_num_idx = BOARD_SIZE - (prev_num - '0');
-    int next_lit_idx = next_lit - 'a';
-    int next_num_idx = BOARD_SIZE - (next_num - '0');
+    int next_lit_idx = next_lit - 'b';
+    int next_num_idx = BOARD_SIZE - (next_num - '1');
 
     check_is_exist(board, figure_code, prev_num_idx, prev_lit_idx);
 
@@ -70,6 +70,7 @@ void get_movement_out(
         *castling = LONG_CASTLING;
     else if (strstr(*movement, "0-0"))
         *castling = SHORT_CASTLING;
+    *castling = 0;
 
     *figure_code = check_figure_type(*movement[0]);
     if (!*figure_code) {
@@ -84,7 +85,7 @@ void make_castling(
     char prev_lit = 'e';
     char prev_num = is_white ? '1' : '8';
     char next_lit = castling_type == LONG_CASTLING ? 'c' : 'g';
-    char next_num = is_white ? '1' : '8';
+    char next_num = is_white ? '2' : '7';
     move_figure(board, prev_lit, prev_num, next_lit, next_num, KING, 0);
 
     // move ROOK
