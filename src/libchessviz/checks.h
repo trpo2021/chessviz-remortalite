@@ -1,12 +1,16 @@
 #ifndef CHECKS_H
 #define CHECKS_H
 
+#include <libchessviz/board.h>
+#include <libchessviz/constants.h>
+
 enum Errors {
     ERROR_FILE_PROCESSING,
     ERROR_MEMORY_ALLOCATION,
     ERROR_WRONG_CELL,
     ERROR_NO_FIGURE,
     ERROR_NOT_ON_BOARD,
+    ERROR_WRONG_FIGURETYPE,
 };
 
 void check_is_exist(

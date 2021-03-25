@@ -1,7 +1,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#define BOARD_SIZE 8
+#include <libchessviz/constants.h>
 
 enum Figures {
     PAWN = 112,
@@ -15,6 +15,8 @@ enum Figures {
 void print_board(int (*)[BOARD_SIZE]);
 
 int make_figure(int, int);
+
+int check_figure_type(char);
 
 void make_board(int (*)[BOARD_SIZE]);
 

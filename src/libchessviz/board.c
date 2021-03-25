@@ -1,4 +1,5 @@
 #include <libchessviz/board.h>
+#include <libchessviz/constants.h>
 
 #include <stdio.h>
 
@@ -23,6 +24,30 @@ void print_board(int board[BOARD_SIZE][BOARD_SIZE])
 int make_figure(int figure, int isWhite)
 {
     return figure - isWhite * 32;
+}
+
+int check_figure_type(char c)
+{
+    if (c == '0')
+        return KING;
+    if ('a' <= c && c <= 'h')
+        return PAWN;
+    switch (c) {
+    case 'K':
+        return KING;
+    case 'Q':
+        return QUEEN;
+    case 'R':
+        return ROOK;
+    case 'N':
+        return KNIGHT;
+    case 'B':
+        return BISHOP;
+    case 'P':
+        return PAWN;
+    default:
+        return 0;
+    }
 }
 
 void make_board(int board[BOARD_SIZE][BOARD_SIZE])

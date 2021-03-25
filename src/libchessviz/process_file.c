@@ -1,52 +1,10 @@
-#include <libchessviz/board.h>
 #include <libchessviz/checks.h>
+#include <libchessviz/constants.h>
 #include <libchessviz/move.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define MAX_LINE_LEN 20
-
-void make_movements(
-        int board[BOARD_SIZE][BOARD_SIZE], char** game_arr, int cnt_line)
-{
-    // game_arr[cnt_line][MAX_LINE_LEN]
-    // input format: "N. Pw-Pw Pb-Pb"
-
-    int idx_dot = 0;
-
-    for (int line = 0; line < cnt_line; line++) {
-        if (game_arr[line][0] == '\0' || strlen(game_arr[line]) == 0)
-            break;
-
-        idx_dot = strchr(game_arr[line], '.') - game_arr[line];
-
-        int idx_Pw = idx_dot;
-        while (((game_arr[line][idx_Pw] < 'a')
-                || (game_arr[line][idx_Pw] > 'h'))
-               && (game_arr[line][idx_Pw] != '\0'))
-            idx_Pw++;
-
-        puts(game_arr[line]);
-
-        move_figure(
-                board,
-                game_arr[line][idx_Pw],
-                game_arr[line][idx_Pw + 1],
-                game_arr[line][idx_Pw + 3],
-                game_arr[line][idx_Pw + 4]);
-
-        int idx_Pb = idx_Pw + 6;
-        move_figure(
-                board,
-                game_arr[line][idx_Pb],
-                game_arr[line][idx_Pb + 1],
-                game_arr[line][idx_Pb + 3],
-                game_arr[line][idx_Pb + 4]);
-
-        print_board(board);
-    }
-}
 
 void process_file(int board[BOARD_SIZE][BOARD_SIZE], const char* path_to_file)
 {
@@ -100,5 +58,5 @@ void process_file(int board[BOARD_SIZE][BOARD_SIZE], const char* path_to_file)
         for (int k = 0; k < i; k++)
             printf("%s\n", game_arr[k]);
     */
-    make_movements(board, game_arr, cnt_line);
+    process_movements(board, game_arr, cnt_line);
 }
