@@ -14,7 +14,7 @@ void make_zeros(int board[BOARD_SIZE][BOARD_SIZE])
             board[i][j] = 0;
 }
 
-CTEST(suite_move, move_figure)
+CTEST(suite_move, move_figure_test)
 {
     int i, j;
 
@@ -220,4 +220,85 @@ CTEST(suite_move, move_figure)
             ASSERT_EQUAL(board_exp[i][j], board_res[i][j]);
         }
     }
+}
+
+CTEST(suite_move, get_movement_out_test)
+{
+    //
+    // subtest 1
+
+    char* line = "   Ke2-e4 e7-e5";
+
+    char* movement_res = calloc(MAX_MOVE_LEN, sizeof(char));
+    char* movement_exp = calloc(MAX_MOVE_LEN, sizeof(char));
+    movement_exp = "Ke2-e4";
+
+    char* rest_res = calloc(MAX_MOVE_LEN, sizeof(char));
+    char* rest_exp = calloc(MAX_MOVE_LEN, sizeof(char));
+    rest_exp = " e7-e5";
+
+    int castling_res;
+    int castling_exp = 0;
+
+    int figure_code_res;
+    int figure_code_exp = 'k';
+
+    get_movement_out(
+            line, &movement_res, &rest_res, &castling_res, &figure_code_res);
+
+    ASSERT_EQUAL(castling_exp, castling_res);
+    ASSERT_EQUAL(figure_code_exp, figure_code_res);
+    ASSERT_STR(movement_exp, movement_res);
+    ASSERT_STR(rest_exp, rest_res);
+
+    //
+    // subtest 2
+
+    line = "   e2-e4 0-0-0";
+    movement_exp = "e2-e4";
+    rest_exp = " 0-0-0";
+    castling_exp = 0;
+    figure_code_exp = 'p';
+
+    get_movement_out(
+            line, &movement_res, &rest_res, &castling_res, &figure_code_res);
+
+    ASSERT_EQUAL(castling_exp, castling_res);
+    ASSERT_EQUAL(figure_code_exp, figure_code_res);
+    ASSERT_STR(movement_exp, movement_res);
+    ASSERT_STR(rest_exp, rest_res);
+
+    //
+    // subtest 3
+
+    line = "   0-0 0-0-0";
+    movement_exp = "0-0";
+    rest_exp = " 0-0-0";
+    castling_exp = SHORT_CASTLING;
+    figure_code_exp = 'k';
+
+    get_movement_out(
+            line, &movement_res, &rest_res, &castling_res, &figure_code_res);
+
+    ASSERT_EQUAL(castling_exp, castling_res);
+    ASSERT_EQUAL(figure_code_exp, figure_code_res);
+    ASSERT_STR(movement_exp, movement_res);
+    ASSERT_STR(rest_exp, rest_res);
+
+    //
+    // subtest 4
+
+    line = "   0-0-0  Qe1-d1 ";
+    movement_exp = "0-0-0";
+    rest_exp = "  Qe1-d1 ";
+    castling_exp = LONG_CASTLING;
+    figure_code_exp = 'k';
+
+    get_movement_out(
+            line, &movement_res, &rest_res, &castling_res, &figure_code_res);
+
+    ASSERT_EQUAL(castling_exp, castling_res);
+    ASSERT_EQUAL(figure_code_exp, figure_code_res);
+    ASSERT_STR(movement_exp, movement_res);
+    ASSERT_STR(rest_exp, rest_res);
 }
