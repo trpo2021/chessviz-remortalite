@@ -302,3 +302,65 @@ CTEST(suite_move, get_movement_out_test)
     ASSERT_STR(movement_exp, movement_res);
     ASSERT_STR(rest_exp, rest_res);
 }
+
+CTEST(move_suite, make_castling_test)
+{
+    int i, j;
+
+    int board_res[BOARD_SIZE][BOARD_SIZE] = {0};
+    int board_exp[BOARD_SIZE][BOARD_SIZE] = {0};
+    int castling_type;
+    int is_white;
+
+    //
+    // subtest 1: test LONG_CASTLING
+
+    board_res[0][4] = 'k';
+    board_res[7][4] = 'K';
+
+    board_res[0][0] = 'r';
+    board_res[7][0] = 'R';
+
+    castling_type = LONG_CASTLING;
+
+    is_white = 0;
+    make_castling(board_res, castling_type, is_white);
+    is_white = 1;
+    make_castling(board_res, castling_type, is_white);
+
+    board_exp[0][2] = 'k';
+    board_exp[0][3] = 'r';
+
+    board_exp[7][2] = 'K';
+    board_exp[7][3] = 'R';
+
+    for (i = 0; i < BOARD_SIZE; i++)
+        for (j = 0; j < BOARD_SIZE; j++)
+            ASSERT_EQUAL(board_exp[i][j], board_res[i][j]);
+
+    //
+    // subtest 2: test SHORT_CASTLING
+
+    board_res[0][4] = 'k';
+    board_res[7][4] = 'K';
+
+    board_res[0][7] = 'r';
+    board_res[7][7] = 'R';
+
+    castling_type = SHORT_CASTLING;
+
+    is_white = 0;
+    make_castling(board_res, castling_type, is_white);
+    is_white = 1;
+    make_castling(board_res, castling_type, is_white);
+
+    board_exp[0][6] = 'k';
+    board_exp[0][5] = 'r';
+
+    board_exp[7][6] = 'K';
+    board_exp[7][5] = 'R';
+
+    for (i = 0; i < BOARD_SIZE; i++)
+        for (j = 0; j < BOARD_SIZE; j++)
+            ASSERT_EQUAL(board_exp[i][j], board_res[i][j]);
+}
