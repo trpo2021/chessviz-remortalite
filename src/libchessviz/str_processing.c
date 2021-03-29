@@ -25,12 +25,14 @@ static int isspecchar(char c)
 {
     int length = strlen(SPEC_CHAR) + 1;
     char* spec_arr = calloc(length, sizeof(char));
-    spec_arr = SPEC_CHAR;
+    strcpy(spec_arr, SPEC_CHAR);
     for (int i = 0; i < length && spec_arr[i] != '\0'; i++) {
         if (c == spec_arr[i]) {
+            free(spec_arr);
             return 1;
         }
     }
+    free(spec_arr);
     return 0;
 }
 
